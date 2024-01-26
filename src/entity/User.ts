@@ -21,6 +21,6 @@ export class Users {
     password: string;
 
     @Column({ nullable: true }) 
-    test: string;
+    test?: string;
 
 }

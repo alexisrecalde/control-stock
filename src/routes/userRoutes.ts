@@ -17,5 +17,13 @@ router.post("/create", async (req: Request, res: Response) => {
     res.status(200).json(newUser);
 });
 
+// router.get("/:id", async (req: Request, res: Response) => {
+//     const id = req.params.id;
+//     const user = await AppDataSource.getRepository(Users).findOne();
+//     res.status(200).json(user);
+// });
+
+
+
 
 export default router;
