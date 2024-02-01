@@ -16,4 +16,5 @@ export const AppDataSource = new DataSource({
     subscribers: [],
     migrationsTableName: "users_migrations",
     migrationsRun: true,
+    uuidExtension: "uuid-ossp",
 })

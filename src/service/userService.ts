@@ -8,11 +8,11 @@ export const getUsers = async (): Promise<Users[]> => {
     return users;
 }
 
-//get by id
-// export const getUserById = async (id: string): Promise<Users> => {
-//     const user = await AppDataSource.getRepository(Users).findOne(id);
-//     return user;
-// }
+// get by id
+export const getUserById = async (id: string): Promise<Users> => {
+    const user = await UserDao.getUserById(id);
+    return user;
+}
 
 // create user
 

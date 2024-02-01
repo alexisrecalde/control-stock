@@ -1,8 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from "typeorm"
+import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
 export class Users {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
@@ -14,7 +15,7 @@ export class Users {
     @Column({ unique: true })
     email: string;
 
-    @Column()
+    @Column({ type: "enum", enum: ["admin", "user", "guest"] })
     rol: string;
 
     @Column()
@@ -23,4 +24,10 @@ export class Users {
     @Column({ nullable: true }) 
     test?: string;
 
+    @BeforeInsert()
+    generateId() {
+        if (!this.id) {
+            this.id = uuidv4();
+        }
+    }
 }

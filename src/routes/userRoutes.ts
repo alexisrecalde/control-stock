@@ -1,7 +1,8 @@
 import express, { Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";
 import { Users } from "../entity/User";
-import { createUser, getUsers } from "../service/userService";
+import { createUser, getUserById, getUsers } from "../service/userService";
+import { get } from 'http';
 
 
 const router: Router = express.Router();
@@ -17,11 +18,11 @@ router.post("/create", async (req: Request, res: Response) => {
     res.status(200).json(newUser);
 });
 
-// router.get("/:id", async (req: Request, res: Response) => {
-//     const id = req.params.id;
-//     const user = await AppDataSource.getRepository(Users).findOne();
-//     res.status(200).json(user);
-// });
+router.get("/:id", async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const user = await getUserById(id);
+    res.status(200).json(user);
+});
 
 
 
