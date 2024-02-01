@@ -4,6 +4,7 @@ export class CreateTable1705551843517 implements MigrationInterface {
     name = 'CreateTable1705551843517'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
         await queryRunner.query(`
             CREATE TYPE "user_roles_enum" AS ENUM ('admin', 'user', 'guest');
             CREATE TABLE "users" (
