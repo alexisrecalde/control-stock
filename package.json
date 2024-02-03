@@ -10,7 +10,12 @@
         "prod": "node dist/app.js",
         "typeorm": "typeorm-ts-node-esm",
         "migration:generate": "npm run typeorm -- migration:generate ./src/migrations/%npm_config_name% -d src/data-source.ts",
-        "migration:run": "npm run typeorm -- migration:run -d src/data-source.ts"
+        "migration:run": "npm run typeorm -- migration:run -d src/data-source.ts",
+        "start-db": "docker-compose up -d",
+   "reset-db": "npm run docker:stop && npm run docker:remove && npm run docker:build && npm run migration:run",
+    "docker:stop": "docker ps -q --filter \"ancestor=postgres:14.5\" | xargs -r docker stop",
+    "docker:remove": "docker ps -a -q --filter \"ancestor=postgres:14.5\" | xargs -r docker rm",
+    "docker:build": "docker-compose up -d"
     },
     "keywords": [],
     "author": "",
