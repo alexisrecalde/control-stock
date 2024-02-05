@@ -1,22 +1,29 @@
+import { hashPassword } from '../../utils/authUtils';
 import UserDao from "../DAO/userDAO";
-import { AppDataSource } from "../data-source";
 import { Users } from "../entity/User";
+import { User } from '../types/userType';
 
 
-export const getUsers = async (): Promise<Users[]> => {
+export const getUsers = async (): Promise<User[]> => {
     const users = await UserDao.getUsers();
     return users;
 }
 
 // get by id
-export const getUserById = async (id: string): Promise<Users> => {
+export const getUserById = async (id: string): Promise<User> => {
     const user = await UserDao.getUserById(id);
     return user;
 }
 
 // create user
 
-export const createUser = async (user: Users): Promise<Users> => {
-    const newUser = await UserDao.createUser(user);
+export const createUser = async (user: User): Promise<Partial<User>> => {
+    const hashed = hashPassword(user.password);
+    const hashedPassword = await hashed;
+    const userToSave = {
+        ...user,
+        password: hashedPassword
+    }
+    const newUser = await UserDao.registerUser(userToSave);
     return newUser;
 }

@@ -1,8 +1,6 @@
 import express, { Request, Response, Router } from "express";
-import { AppDataSource } from "../data-source";
 import { Users } from "../entity/User";
 import { createUser, getUserById, getUsers } from "../service/userService";
-import { get } from 'http';
 
 
 const router: Router = express.Router();
@@ -23,6 +21,8 @@ router.get("/:id", async (req: Request, res: Response) => {
     const user = await getUserById(id);
     res.status(200).json(user);
 });
+
+
 
 
 

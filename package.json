@@ -12,16 +12,18 @@
         "migration:generate": "npm run typeorm -- migration:generate ./src/migrations/%npm_config_name% -d src/data-source.ts",
         "migration:run": "npm run typeorm -- migration:run -d src/data-source.ts",
         "start-db": "docker-compose up -d",
-   "reset-db": "npm run docker:stop && npm run docker:remove && npm run docker:build && npm run migration:run",
-    "docker:stop": "docker ps -q --filter \"ancestor=postgres:14.5\" | xargs -r docker stop",
-    "docker:remove": "docker ps -a -q --filter \"ancestor=postgres:14.5\" | xargs -r docker rm",
-    "docker:build": "docker-compose up -d"
+        "reset-db": "npm run docker:stop && npm run docker:remove && npm run docker:build && npm run migration:run",
+        "docker:stop": "docker ps -q --filter \"ancestor=postgres:14.5\" | xargs -r docker stop",
+        "docker:remove": "docker ps -a -q --filter \"ancestor=postgres:14.5\" | xargs -r docker rm",
+        "docker:build": "docker-compose up -d"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/bcryptjs": "^2.4.6",
         "@types/express": "^4.17.21",
+        "bcryptjs": "^2.4.3",
         "express": "^4.18.2",
         "mysql": "^2.18.1",
         "pg": "^8.11.3",

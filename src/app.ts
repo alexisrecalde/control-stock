@@ -1,6 +1,7 @@
 import express from "express";
 import { AppDataSource } from "./data-source";
 import usersRoutes from "./routes/userRoutes";
+import authRoutes from "./routes/authenticateRoutes";
 
 // Inicializar la conexión a la base de datos
 AppDataSource
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // Registrar las rutas
 app.use("/api/users", usersRoutes);
+app.use("/api/auth", authRoutes);
 
 // Iniciar el servidor
 const PORT = 5000;

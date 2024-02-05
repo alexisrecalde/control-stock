@@ -42,8 +42,8 @@ export class CreateCompleteDatabase1705551843518 implements MigrationInterface {
 
         // Relación Users con Roles
         await queryRunner.query(`
-            ALTER TABLE "users" ADD "rolId" uuid;
-            ALTER TABLE "users" ADD CONSTRAINT "FK_users_roles" FOREIGN KEY ("rolId") REFERENCES "roles"("id") ON DELETE SET NULL;
+            ALTER TABLE "users" ADD "rol_id" uuid;
+            ALTER TABLE "users" ADD CONSTRAINT "FK_users_roles" FOREIGN KEY ("rol_id") REFERENCES "roles"("id") ON DELETE SET NULL;
         `);
 
         // Productos
@@ -74,8 +74,8 @@ export class CreateCompleteDatabase1705551843518 implements MigrationInterface {
 
         // Relación Categorias con Productos
         await queryRunner.query(`
-            ALTER TABLE "productos" ADD "categoriaId" uuid;
-            ALTER TABLE "productos" ADD CONSTRAINT "FK_productos_categorias" FOREIGN KEY ("categoriaId") REFERENCES "categorias"("id") ON DELETE SET NULL;
+            ALTER TABLE "productos" ADD "categoria_id" uuid;
+            ALTER TABLE "productos" ADD CONSTRAINT "FK_productos_categorias" FOREIGN KEY ("categoria_id") REFERENCES "categorias"("id") ON DELETE SET NULL;
         `);
 
         // Ventas
