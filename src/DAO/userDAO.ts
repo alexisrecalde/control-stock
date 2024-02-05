@@ -11,14 +11,14 @@ namespace UserDao {
         return users;
     }
     
-    export const createUser = async (user: User): Promise<Users> => {
+    export const createUser = async (user: User): Promise<User> => {
         const newUser = await AppDataSource.getRepository(Users)
             .save(user);
         return newUser;
     }
 
     // get by id
-    export const getUserById = async (id: string): Promise<Users> => {
+    export const getUserById = async (id: string): Promise<User> => {
         const user = await AppDataSource.getRepository(Users)
             .findOne({ where: { id } });
         return user;
@@ -36,7 +36,7 @@ namespace UserDao {
         return encryptedPassword
     }
 
-    export const getUserByEmail = async (email: string): Promise<Partial<Users>> => {
+    export const getUserByEmail = async (email: string): Promise<Partial<User>> => {
         const user = await AppDataSource.getRepository(Users)
             .findOne({
                 where: { email },

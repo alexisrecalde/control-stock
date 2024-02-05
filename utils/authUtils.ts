@@ -6,7 +6,7 @@ import { Users } from '../src/entity/User';
 import { User } from '../src/types/userType';
 
 export const generateToken = (payload: object) => {
-    const token = jwt.sign([payload], 'secret', {
+    const token = jwt.sign(payload, 'secret', {
         expiresIn: 86400
     });
         return token;
