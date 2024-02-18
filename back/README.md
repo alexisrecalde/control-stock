@@ -5,12 +5,9 @@ Steps to run this project:
 1. Run `npm i` command
 2. Run `docker-compose up` command
 3. Run `npm start` command
-// docker run -it --rm postgres:14.5 psql -h localhost -U test -d test
-// npx typeorm --  migration:run -d src/data-source.ts
-// npx typeorm migration:create ./src/migrations/Test
 
 
-//npx typeorm-ts-node-esm migration:generate -d src/data-source.ts
-npx typeorm-ts-node-esm migration:run -d src/data-source.ts
-//typeorm migration:run -- -d src/data-source.ts
-// typeorm migration:run -- -d src/data-source.ts
+# Crear nueva migracion
+
+1. ejemplo: npm run migration:create --name=NEW_TABLE_VENTAS_PRODUCTOS
+2. correr el script reset-db

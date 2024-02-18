@@ -79,19 +79,15 @@ export class CreateCompleteDatabase1705551843518 implements MigrationInterface {
         `);
 
         // Ventas
-        await queryRunner.query(`
+         await queryRunner.query(`
             CREATE TABLE "ventas" (
                 "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
                 "usuario_id" uuid NOT NULL,
-                "producto_id" uuid NOT NULL,
-                "cantidad" integer NOT NULL,
-                "precio_total" numeric NOT NULL,
                 "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 "deleted_at" TIMESTAMP,
                 CONSTRAINT "PK_ventas" PRIMARY KEY ("id"),
-                CONSTRAINT "FK_ventas_users" FOREIGN KEY ("usuario_id") REFERENCES "users"("id"),
-                CONSTRAINT "FK_ventas_productos" FOREIGN KEY ("producto_id") REFERENCES "productos"("id")
+                CONSTRAINT "FK_ventas_users" FOREIGN KEY ("usuario_id") REFERENCES "users"("id")
             )
         `);
 

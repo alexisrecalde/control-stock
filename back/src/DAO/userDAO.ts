@@ -6,27 +6,31 @@ import { EncryptedPassword, User } from '../types/userType';
 namespace UserDao {
 
     export const getUsers = async (): Promise<User[]> => {
-        const users = await AppDataSource.getRepository(Users)
+        const users = await AppDataSource
+            .getRepository(Users)
             .find();
         return users;
     }
     
     export const createUser = async (user: User): Promise<User> => {
-        const newUser = await AppDataSource.getRepository(Users)
+        const newUser = await AppDataSource
+            .getRepository(Users)
             .save(user);
         return newUser;
     }
 
     // get by id
     export const getUserById = async (id: string): Promise<User> => {
-        const user = await AppDataSource.getRepository(Users)
+        const user = await AppDataSource
+            .getRepository(Users)
             .findOne({ where: { id } });
         return user;
     }
 
     // get password by email
     export const getPasswordByEmail = async (email: string): Promise<EncryptedPassword> => {
-        const user = await AppDataSource.getRepository(Users)
+        const user = await AppDataSource
+            .getRepository(Users)
             .findOne({ where: { email } });
 
         const encryptedPassword = {
@@ -37,7 +41,8 @@ namespace UserDao {
     }
 
     export const getUserByEmail = async (email: string): Promise<Partial<User>> => {
-        const user = await AppDataSource.getRepository(Users)
+        const user = await AppDataSource
+            .getRepository(Users)
             .findOne({
                 where: { email },
                 select: ["id", "nombre", "apellido", "rol", "email"]
