@@ -28,7 +28,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
     res.status(200).json({ message: "Categoría eliminada exitosamente." });
 });
 
-router.put("/:id", async (req: Request, res: Response) => {
+router.patch("/:id", async (req: Request, res: Response) => {
     const categoryId = req.params.id;
     const { name } = req.body;
     if (!categoryId) {
