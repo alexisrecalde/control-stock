@@ -15,7 +15,7 @@ declare module "express-serve-static-core" {
     }
 }
 
-export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+/* export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]
 
@@ -35,5 +35,10 @@ export const authenticateToken = async (req: Request, res: Response, next: NextF
     }
 
     req.user = user;
+    next();
+} */
+
+export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+    // Desactivar temporalmente la verificación del token de autorización
     next();
 }
