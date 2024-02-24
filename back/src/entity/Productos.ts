@@ -12,7 +12,7 @@ export class Productos {
     @Column()
     descripcion: string;
 
-    @Column()
+    @Column({ nullable: true })
     precio: number;
 
     @Column("uuid")
