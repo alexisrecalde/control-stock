@@ -27,10 +27,10 @@ export class SEED1708053206396 implements MigrationInterface {
         // Insertar datos en la tabla productos
         await queryRunner.query(`
             INSERT INTO "productos" ("id", "nombre", "descripcion", "precio", "created_at", "updated_at", "deleted_at", "categoria_id") VALUES
-            ('77777777-7777-7777-7777-777777777777', 'Smartphone', 'Teléfono inteligente', '500', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555'),
-            ('88888888-8888-8888-8888-888888888888', 'Laptop', 'Computadora portátil', '1000', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555'),
-            ('99999999-9999-9999-9999-999999999999', 'Camiseta', 'Ropa casual', '20', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '66666666-6666-6666-6666-666666666666'),
-            ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Auriculares', 'Auriculares inalámbricos', '50', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555');
+            ('77777777-7777-7777-7777-777777777777', 'Smartphone', 'Teléfono inteligente', 500, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555'),
+            ('88888888-8888-8888-8888-888888888888', 'Laptop', 'Computadora portátil', 1000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555'),
+            ('99999999-9999-9999-9999-999999999999', 'Camiseta', 'Ropa casual', 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '66666666-6666-6666-6666-666666666666'),
+            ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Auriculares', 'Auriculares inalámbricos', 50, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, '55555555-5555-5555-5555-555555555555');        
         `);
 
         // Insertar datos en la tabla ventas
