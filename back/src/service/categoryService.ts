@@ -9,7 +9,6 @@ export const getCategories = async (): Promise<Categorys[]> => {
 
 export const addCategory = async (name: string): Promise<Categorys> => {
     const newCategory = await categoryDao.addCategory(name);
-    console.log(newCategory);
     
     return newCategory;
 }
