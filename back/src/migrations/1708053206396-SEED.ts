@@ -12,8 +12,8 @@ export class SEED1708053206396 implements MigrationInterface {
         // Insertar datos en la tabla users
         await queryRunner.query(`
            INSERT INTO "users" ("id", "nombre", "apellido", "email", "rol", "password", "created_at", "updated_at", "deleted_at") VALUES
-('33333333-3333-3333-3333-333333333333', 'Admin', 'User', 'admin@example.com', 'admin', 'hashedpassword', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL),
-('44444444-4444-4444-4444-444444444444', 'Regular', 'User', 'user@example.com', 'user', 'hashedpassword', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL);
+('33333333-3333-3333-3333-333333333333', 'Admin', 'User', 'admin@example.com', 'admin', '$2a$10$3I2W.axn6fIlRM9f7AZPM.I60wUFGFGH8wI5/nVuWSooDgY8XhcEW', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL),
+('44444444-4444-4444-4444-444444444444', 'Regular', 'User', 'admin@test.com', 'user', 'hashedpassword', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL);
 
         `);
 

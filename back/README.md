@@ -11,3 +11,10 @@ Steps to run this project:
 
 1. ejemplo: npm run migration:create --name=NEW_TABLE_VENTAS_PRODUCTOS
 2. correr el script reset-db
+
+
+# Usuarios de pprueba
+{
+    "email" : "admin@test.com",
+    "password" : "test123"
+}
