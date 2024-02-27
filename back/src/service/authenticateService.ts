@@ -5,15 +5,12 @@ import { AuthTokenResponse } from '../types/userType';
 
 export const authenticate = async (email: string, password: string): Promise<AuthTokenResponse> => {
     const passwordHash = await UserDao.getPasswordByEmail(email);
-    console.log(passwordHash);
-    
+
     if (!passwordHash) {
         return null;
     }
 
-    const passwordMatch = comparePassword(password, passwordHash.password); 
-    console.log(passwordMatch);
-    
+    const passwordMatch = await comparePassword(password, passwordHash.password); 
 
     if (!passwordMatch) {
         return null;
@@ -22,8 +19,6 @@ export const authenticate = async (email: string, password: string): Promise<Aut
     const user = await UserDao.getUserByEmail(email);
 
     const token = generateToken({ id: user.id, rol: user.rol });
-    console.log(token);
-    
 
     const authTokenResponse = {
         access_token: token,

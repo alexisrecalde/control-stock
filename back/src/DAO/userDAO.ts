@@ -28,11 +28,14 @@ namespace UserDao {
     }
 
     // get password by email
-    export const getPasswordByEmail = async (email: string): Promise<EncryptedPassword> => {
+    export const getPasswordByEmail = async (email: string): Promise<EncryptedPassword | null> => {
         const user = await AppDataSource
             .getRepository(Users)
             .findOne({ where: { email } });
 
+        if (!user) {
+            return null;
+        }
         const encryptedPassword = {
             password: user.password,
         }
