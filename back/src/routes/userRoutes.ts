@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from "express";
-import { Users } from "../entity/User";
 import { createUser, getUserById, getUsers } from "../service/userService";
+import { User } from "../types/userType";
 
 
 const router: Router = express.Router();
@@ -11,7 +11,7 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/create", async (req: Request, res: Response) => {
-    const user: Users = req.body;
+    const user: User = req.body;
     const newUser = await createUser(user)
     res.status(200).json(newUser);
 });

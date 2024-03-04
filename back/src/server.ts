@@ -16,7 +16,6 @@ AppDataSource
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(authenticateToken);
 app.use(router);
 
 export default app;

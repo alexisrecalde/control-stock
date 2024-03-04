@@ -15,9 +15,13 @@ declare module "express-serve-static-core" {
     }
 }
 
-/* export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers['authorization'];
+    console.log("authHeader", authHeader);
+    
     const token = authHeader && authHeader.split(' ')[1]
+    console.log(token);
+    
 
     if (token == null) return res.sendStatus(401)
 
@@ -29,16 +33,15 @@ declare module "express-serve-static-core" {
         return res.sendStatus(403);
     }
 
-    // verify role
     if (user.rol !== 'admin' && user.rol !== 'user') {
         return res.sendStatus(403);
     }
 
     req.user = user;
     next();
-} */
-
-export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
-    // Desactivar temporalmente la verificación del token de autorización
-    next();
 }
+
+// export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+//     // Desactivar temporalmente la verificación del token de autorización
+//     next();
+// }
