@@ -2,11 +2,12 @@
 import { compare, hash } from "bcryptjs";
 import jwt from 'jsonwebtoken';
 import UserDao from '../src/DAO/userDAO';
-import { Users } from '../src/entity/User';
 import { User } from '../src/types/userType';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const generateToken = (payload: object) => {
-    const token = jwt.sign(payload, 'secret', {
+    const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: 86400
     });
         return token;

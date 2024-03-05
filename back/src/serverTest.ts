@@ -17,7 +17,6 @@ export const startServer = async () : Promise<express.Application> => {
     
     testApp.use(router);
 
-
     // Puerto diferente para pruebas
     const PORT_TEST = 5002;
     testApp.listen(PORT_TEST, () => {

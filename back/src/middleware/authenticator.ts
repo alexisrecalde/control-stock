@@ -8,6 +8,11 @@ type DecodeToken = {
     iat: number;
     exp: number;
 }
+declare module "express-serve-static-core" {
+    interface Request {
+        user: User
+    }
+}
 
 declare module "express-serve-static-core" {
     interface Request {
@@ -15,9 +20,10 @@ declare module "express-serve-static-core" {
     }
 }
 
-/* export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]
+
+    const token = authHeader && authHeader.split(' ')[1];
 
     if (token == null) return res.sendStatus(401)
 
@@ -29,16 +35,15 @@ declare module "express-serve-static-core" {
         return res.sendStatus(403);
     }
 
-    // verify role
     if (user.rol !== 'admin' && user.rol !== 'user') {
         return res.sendStatus(403);
     }
 
     req.user = user;
     next();
-} */
-
-export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
-    // Desactivar temporalmente la verificación del token de autorización
-    next();
 }
+
+// export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+//     // Desactivar temporalmente la verificación del token de autorización
+//     next();
+// }

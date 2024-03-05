@@ -46,6 +46,19 @@ export class CreateCompleteDatabase1705551843518 implements MigrationInterface {
             ALTER TABLE "users" ADD CONSTRAINT "FK_users_roles" FOREIGN KEY ("rol_id") REFERENCES "roles"("id") ON DELETE SET NULL;
         `);
 
+         // Categorias
+         await queryRunner.query(`
+         CREATE TABLE "categorias" (
+             "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+             "nombre" character varying NOT NULL,
+             "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             "deleted_at" TIMESTAMP,
+             CONSTRAINT "PK_categorias" PRIMARY KEY ("id")
+         )
+     `);
+
+
         // Productos
         await queryRunner.query(`
             CREATE TABLE "productos" (
@@ -53,30 +66,19 @@ export class CreateCompleteDatabase1705551843518 implements MigrationInterface {
                 "nombre" character varying NOT NULL,
                 "descripcion" character varying NOT NULL,
                 "precio" numeric NOT NULL,
+                "categoria_id" uuid,
                 "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 "deleted_at" TIMESTAMP,
-                CONSTRAINT "PK_productos" PRIMARY KEY ("id")
+                CONSTRAINT "PK_productos" PRIMARY KEY ("id"),
+                CONSTRAINT "FK_productos_categorias" FOREIGN KEY ("categoria_id") REFERENCES "categorias"("id") ON DELETE SET NULL
             )
         `);
 
-        // Categorias
-        await queryRunner.query(`
-            CREATE TABLE "categorias" (
-                "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
-                "nombre" character varying NOT NULL,
-                "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                "deleted_at" TIMESTAMP,
-                CONSTRAINT "PK_categorias" PRIMARY KEY ("id")
-            )
-        `);
-
-        // Relación Categorias con Productos
-        await queryRunner.query(`
-            ALTER TABLE "productos" ADD "categoria_id" uuid;
-            ALTER TABLE "productos" ADD CONSTRAINT "FK_productos_categorias" FOREIGN KEY ("categoria_id") REFERENCES "categorias"("id") ON DELETE SET NULL;
-        `);
+        // // Relación Categorias con Productos
+        // await queryRunner.query(`
+        //     ALTER TABLE "productos" ADD CONSTRAINT "FK_productos_categorias" FOREIGN KEY ("categoria_id") REFERENCES "categorias"("id") ON DELETE SET NULL;
+        // `);
 
         // Ventas
          await queryRunner.query(`

@@ -21,9 +21,6 @@ export class Users {
     @Column()
     password: string;
 
-    @Column({ nullable: true }) 
-    test?: string;
-
     @BeforeInsert()
     generateId() {
         if (!this.id) {
