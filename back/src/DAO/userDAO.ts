@@ -55,6 +55,7 @@ namespace UserDao {
 
     export const registerUser = async (user: User): Promise<Partial<User>> => {
         const newUser = AppDataSource
+            .getRepository(Users)
             .createQueryBuilder()
             .insert()
             .into(Users)

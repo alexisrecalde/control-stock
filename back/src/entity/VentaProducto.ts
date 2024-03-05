@@ -16,7 +16,7 @@ export class VentasProductos {
     @Column()
     producto_id: string;
 
-    @ManyToOne(() => Users)
+    @ManyToOne(() => Ventas)
     @JoinColumn({ name: 'venta_id' })
     venta: Ventas;
 
@@ -24,14 +24,20 @@ export class VentasProductos {
     @JoinColumn({ name: 'producto_id' })
     producto: Productos;
 
-    @CreateDateColumn({ type: 'timestamp' })
-    created_at: Date;
+    @Column({nullable: true})
+    cantidad: number;
 
-    @UpdateDateColumn({ type: 'timestamp' })
-    updated_at: Date;
+    @Column({nullable: true})
+    precio_total: number;
 
-    @DeleteDateColumn({ type: 'timestamp' })
-    deleted_at: Date;
+    // @CreateDateColumn({ type: 'timestamp' })
+    // created_at: Date;
+
+    // @UpdateDateColumn({ type: 'timestamp' })
+    // updated_at: Date;
+
+    // @DeleteDateColumn({ type: 'timestamp' })
+    // deleted_at: Date;
 
     @BeforeInsert()
     generateId() {
