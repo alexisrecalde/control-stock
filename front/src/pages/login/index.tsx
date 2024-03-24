@@ -12,10 +12,17 @@ const LoginPage = () => {
     const navigate = useNavigate();
     
     const onFinish = async (values: LoginFormValues) => {
-        const response = await login(values.username, values.password);
-        // navigate to home
-        navigate('/home');
-        localStorage.setItem('token', response.access_token);
+        try {
+            const response = await login(values.username, values.password)
+            if (response.status === 200) {
+                navigate('/home');
+                localStorage.setItem('token', response.data.access_token);
+            }
+            
+        } catch (error) {
+            console.log(error);
+            navigate('/error');
+        }
     };
 
 

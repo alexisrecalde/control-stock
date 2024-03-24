@@ -15,6 +15,6 @@ Steps to run this project:
 
 # Usuarios de pprueba
 {
-    "email" : "admin@test.com",
+    "email" : "admin@example.com",
     "password" : "test123"
 }
